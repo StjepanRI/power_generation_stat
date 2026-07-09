@@ -1,0 +1,28 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/java:17-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:"latest"
+  },
+  "forwardPorts": [8080, 5432],
+  "postCreateCommand": "mvn clean install -DskipTests",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.java",
+        "vscjava.vscode-maven",
+        "ms-vscode.makefile-tools",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "ms-vscode.remote-repositories"
+      ],
+      "settings": {
+        "java.server.launchMode": "Standard",
+        "maven.executable.preferMavenFromPath": true
+      }
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.m2,target=/root/.m2,type=volume"
+  ]
+}

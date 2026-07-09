@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: power-generation-stat
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/powerstats
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# Email Configuration
+email:
+  imap-host: imap.gmail.com
+  imap-port: 993
+  username: ${EMAIL_USERNAME}
+  password: ${EMAIL_PASSWORD}
+  folder: INBOX
+  poll-interval-minutes: 60
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.powerstats: DEBUG
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
